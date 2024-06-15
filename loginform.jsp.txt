@@ -1,0 +1,43 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>login form</title>
+        <style>
+            form{
+                border: solid;
+                padding: 20px;
+                width: 25%;
+                height: 25%;
+                background-color:lightskyblue;
+              
+            }
+            div{
+                border: dotted;
+                padding: 20px;
+                width: 50%;
+                height: 50%;
+                background-color: lightgray;
+                
+            }
+            body{
+                background-color: lightyellow;
+            }
+        </style>
+    </head>
+    <body>
+    <center>
+        <div><center><h1>LOGIN</h1>
+                <form action="loginform"  method="POST">
+            
+            <label>User Name</label><br>
+            <input type="varchar" name="username" placeholder=""><br><br>
+            <label>Password</label><br>
+            <input type="varchar" name="password" placeholder=""><br><br>
+            <button>Login</button><br><br>
+           </form>
+            </center> </div>
+    </center>
+    </body>
+</html>
