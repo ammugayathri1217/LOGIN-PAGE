@@ -1,0 +1,52 @@
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ *
+ * @author GAYATHRI
+ */
+
+public class loginform extends HttpServlet {
+    Connection con;
+    PreparedStatement pst;
+    ResultSet rs;
+
+    
+
+    
+  
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost/127.0.0.1/login form","root","");
+            
+            
+            PrintWriter out = response.getWriter();
+            String user=request.getParameter("user name");
+            String pass=request.getParameter("password");
+            pst=(PreparedStatement)  con.prepareStatement("INSERT INTO 'login form'('user name,'passWORD') VALUE");
+            pst.setString(1, user);
+            pst.setString(2, pass);
+            pst.executeUpdate();
+            out.println("sucess");
+        
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(loginform.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+}
